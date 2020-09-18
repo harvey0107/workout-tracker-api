@@ -1,6 +1,6 @@
 
 API="http://localhost:4741"
-URL_PATH="/tracker/${ID}"
+URL_PATH="/tracker"
 
 curl "${API}${URL_PATH}/${ID}" \
   --include \
