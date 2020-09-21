@@ -29,12 +29,13 @@ const router = express.Router()
 // INDEX
 // GET /examples
 router.get('/tracker', requireToken, (req, res, next) => {
-  Tracker.find()
+  console.log('incoming request', req.user)
+  Tracker.find({ owner: req.user._id })
     .then(tracker => {
       // `examples` will be an array of Mongoose documents
       // we want to convert each one to a POJO, so we use `.map` to
       // apply `.toObject` to each one
-      return tracker.map(example => example.toObject())
+      return tracker.map(tracker => tracker.toObject())
     })
     // respond with status 200 and JSON of the examples
     .then(tracker => res.status(200).json({ tracker: tracker }))
@@ -108,6 +109,13 @@ router.delete('/tracker/:id', requireToken, (req, res, next) => {
     // send back 204 and no content if the deletion succeeded
     .then(() => res.sendStatus(204))
     // if an error occurs, pass it to the handler
+    .catch(next)
+})
+
+router.get('/show-all', (req, res, next) => {
+  Tracker.find()
+    .populate('owner')
+    .then(threads => res.status(201).json({ threads }))
     .catch(next)
 })
 
