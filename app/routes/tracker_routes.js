@@ -112,11 +112,11 @@ router.delete('/tracker/:id', requireToken, (req, res, next) => {
     .catch(next)
 })
 
-router.get('/show-all', (req, res, next) => {
-  Tracker.find()
-    .populate('owner')
-    .then(threads => res.status(201).json({ threads }))
-    .catch(next)
-})
+// router.get('/show-all', (req, res, next) => {
+//   Tracker.find()
+//     .populate('owner')
+//     .then(threads => res.status(201).json({ threads }))
+//     .catch(next)
+// })
 
 module.exports = router
