@@ -2,7 +2,7 @@ This is the server side for the web application "Workout Tracker", a site for us
 
 This server interacts with a client application I built with JavaScript, HTML5, Bootstrap, and SCSS. The links to the repo and deployed site can be found here: https://github.com/harvey0107/workout-tracker-frontend https://harvey0107.github.io/workout-tracker-frontend/
 
-This is the first API I ever built myself, I planned to for building working routes and testing curl scripts before getting into the client side.
+I planned to building working routes and testing curl scripts before getting into the client side. I ran into the problem i guess most people had, it was the need to alter GET route to only return workout records that are owned by the requesting user. In order to do this, I refactored a "requireOwnership" error function to return a boolean value instead of throwing an error.
 
 In future versions of this project, I would like to include the ability to comment on workouts, so users able to take note on their workouts and markdown anything they need after each workout.
 
